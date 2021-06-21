@@ -1,4 +1,4 @@
-package java.main.servlets;
+package com.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,10 +14,14 @@ public class Home extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    try {
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
       out.print("hello");
       out.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @Override
