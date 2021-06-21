@@ -1,0 +1,6 @@
+*.class
+.vscode
+bin
+target
+db.properties
+.settings
