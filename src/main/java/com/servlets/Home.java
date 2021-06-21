@@ -16,19 +16,29 @@ public class Home extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String file = "ShowMe.txt";
+    // String file = "resources/ShowMe.txt";
+    // String file = "ShowMe.txt";
+    // String file = "C:\\apache-tomcat-8.5.65\\apache-tomcat-8.5.65-4\\webapps\\java\\resources\\ShowMe.txt";
+    // String file = "webapps/java/resources/ShowMe.txt";
+    // String file = "ShowMe.txt";
+    // String file = "./ShowMe.txt";
     // Read file
-    try (FileInputStream fis = new FileInputStream(file); BufferedInputStream bis = new BufferedInputStream(fis)) {
+    PrintWriter out = response.getWriter();
+    // try (FileInputStream fis = new FileInputStream(file); BufferedInputStream bis = new BufferedInputStream(fis)) {
+    try {
       response.setContentType("text/html");
-      PrintWriter out = response.getWriter();
+      out.print("hello ");
 
-      while (bis.available() > 0) {
-        out.print((char) bis.read());
-      }
-      out.close();
+      String currentDirectory = System.getProperty("user.dir");
+      out.print("The current working directory is " + currentDirectory);
+      // while (bis.available() > 0) {
+      //   out.print((char) bis.read());
+      // }
     } catch (Exception e) {
+      out.print("file not found hello");
       e.printStackTrace();
     }
+    out.close();
   }
 
   @Override
