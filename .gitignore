@@ -4,3 +4,5 @@ bin
 target
 db.properties
 .settings
+.classpath
+.project
