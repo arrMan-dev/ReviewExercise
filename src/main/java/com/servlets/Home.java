@@ -22,14 +22,14 @@ public class Home extends HttpServlet {
     try (FileInputStream fis = new FileInputStream(getClass().getClassLoader().getResource(file).getFile());
         BufferedInputStream bis = new BufferedInputStream(fis)) {
       response.setContentType("text/html");
-      out.print("hello ");
-      out.print("<br/>");
-
+      out.print("<div>hello</div>");
+      out.println("<br/>");
+      StringBuilder sb = new StringBuilder();
       while (bis.available() > 0) {
-        out.print((char) bis.read());
+        sb.append((char) bis.read());
       }
+      out.println("<div>" + sb.toString() + "</div>");
     } catch (Exception e) {
-      out.print("file not found hello");
       e.printStackTrace();
     }
     out.close();
